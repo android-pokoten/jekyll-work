@@ -1,0 +1,10 @@
+services:
+  service_jekyll:
+    image: ruby:3.3.8-slim-bullseye
+    container_name: local_jekyll
+    volumes:
+      - ./android-pokoten.github.io:/srv/jekyll
+      - ./scripts:/tmp/scripts
+    command: sh -c "cd /srv/jekyll && /tmp/scripts/jekyll-init.sh && jekyll serve --host 0.0.0.0 --watch --verbose --trace"
+    ports:
+      - "4000:4000"
